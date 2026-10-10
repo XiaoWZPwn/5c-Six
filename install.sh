@@ -19,9 +19,18 @@ SSH_HOST="root@127.0.0.1"
 DEVICE_CONFIG_STAGE="/mnt2/.5c-six-config"
 IPROXY_PID=
 
+# macOS 11 ships OpenSSH 8.1, which only knows the option name
+# "PubkeyAcceptedKeyTypes"; OpenSSH 8.2+ renamed it to "PubkeyAcceptedAlgorithms".
+# An unknown -o option makes ssh exit instantly, so detect the right one at runtime.
+if /usr/bin/ssh -oPubkeyAcceptedAlgorithms=+ssh-rsa -G x >/dev/null 2>&1; then
+    SSH_PUBKEY_OPT=(-oPubkeyAcceptedAlgorithms=+ssh-rsa)
+else
+    SSH_PUBKEY_OPT=(-oPubkeyAcceptedKeyTypes=+ssh-rsa)
+fi
+
 SSH_OPTIONS=(
     -oHostKeyAlgorithms=+ssh-dss
-    -oPubkeyAcceptedAlgorithms=+ssh-rsa
+    "${SSH_PUBKEY_OPT[@]}"
     -oKexAlgorithms=+diffie-hellman-group1-sha1
     -oCiphers=+aes128-cbc,3des-cbc
     -oMACs=+hmac-sha1
@@ -86,24 +95,41 @@ get_key() {
 }
 
 validate_ipsw() {
-    local candidate="$1" build
+    local candidate="$1" build manifest
     [[ -f "$candidate" ]] || { warn "IPSW file does not exist: $candidate"; return 1; }
-    build="$(unzip -p "$candidate" BuildManifest.plist 2>/dev/null | \
-        /usr/bin/plutil -extract ProductBuildVersion raw -o - - 2>/dev/null)" || {
+    mkdir -p "$WORK" 2>/dev/null || true
+    # Extract to a temp file first: Big Sur plutil supports neither "raw" output
+    # for -extract nor reliable stdin use; xml1 + perl works on macOS 11+.
+    manifest="$WORK/BuildManifest.plist.validate.$$"
+    unzip -p "$candidate" BuildManifest.plist 2>/dev/null > "$manifest" || {
+        rm -f "$manifest"
+        warn "Cannot read BuildManifest.plist from $candidate"
+        return 1
+    }
+    [[ -s "$manifest" ]] || {
+        rm -f "$manifest"
+        warn "Cannot read BuildManifest.plist from $candidate"
+        return 1
+    }
+    build="$(/usr/bin/plutil -extract ProductBuildVersion xml1 -o - "$manifest" 2>/dev/null | \
+        /usr/bin/perl -0777 -ne 'print $1 if m{<string>([^<]+)</string>}s')" || {
+        rm -f "$manifest"
         warn "Cannot read BuildManifest.plist from $candidate"
         return 1
     }
     [[ $build == "10B350" ]] || {
+        rm -f "$manifest"
         warn "IPSW build is '$build'; this project requires 10B350"
         return 1
     }
-    unzip -p "$candidate" BuildManifest.plist 2>/dev/null | \
-        /usr/bin/plutil -convert xml1 -o - - 2>/dev/null | \
+    /usr/bin/plutil -convert xml1 -o - "$manifest" 2>/dev/null | \
         /usr/bin/perl -0777 -ne \
             'exit !(/<key>SupportedProductTypes<\/key>\s*<array>(?:(?!<\/array>).)*<string>iPhone5,2<\/string>/s)' || {
+        rm -f "$manifest"
         warn "IPSW is not for iPhone5,2"
         return 1
     }
+    rm -f "$manifest"
 }
 
 choose_local_ipsw() {
@@ -538,7 +564,7 @@ wait_recovery() {
 }
 
 wait_ssh() {
-    local tries=0
+    local tries=0 diag
     log "Starting USB SSH proxy and waiting for the ramdisk"
     "$TOOLS/iproxy" "$SSH_PORT" 22 -s 127.0.0.1 > "$WORK/iproxy.log" 2>&1 &
     IPROXY_PID=$!
@@ -551,7 +577,8 @@ wait_ssh() {
         ((tries += 1))
         sleep 2
     done
-    die "SSH ramdisk did not start or accept root/alpine"
+    diag="$(ssh_device "echo ready" 2>&1 || true)"
+    die "SSH ramdisk did not start or accept root/alpine; last ssh error: $diag"
 }
 
 install_rootfs() {
