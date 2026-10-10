@@ -2,7 +2,7 @@
 
 This project can currently only achieve the system installation and boot startup  
 of iOS 6.1.4 (10B350). If you want to fix the functions in your device, please  
-wait for Github: @MC-XiaoXiao to release the official version...
+wait for Github: `@MC-XiaoXiao` to release the official version...
 
 This is a standalone macOS project for the experimental, tethered iOS 6.1.4  
 (10B350) cross-boot on iPhone5,3, based on Kaiden's guide:  
@@ -40,14 +40,11 @@ option and press Enter to confirm; press Ctrl-C to cancel:
 
 1. Select a local IPSW using the macOS file chooser.
 2. Download the IPSW from Apple's CDN. The download URL is looked up through  
-   the ipsw.me API, supports resuming, and is checked against the API's file  
-   size and SHA-256.
-
-You can also set `FIVE_C_SIX_IPSW="/path/to/firmware.ipsw"` to select a file  
-explicitly.
+   the ipsw.me API, and is checked against the API's file size and SHA-256.
 
 The first `install` can take a while: it may download the IPSW, decrypt the  
 10B350 filesystem, and stream it to the phone. Keep the USB connection stable.  
 If installation stops after repartitioning, running `install` again repeats the  
 partition and format steps and erases device data again. To return to the stock  
-partition layout, restore the device with an official iPhone5,3 IPSW.
+partition layout, restore the device with an official iPhone5,3 10.3.3/10.3.4  
+IPSW.
