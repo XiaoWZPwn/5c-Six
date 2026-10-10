@@ -1,0 +1,3 @@
+# file-offset  expected-bytes  replacement-bytes  reason
+5f240c 05f0e4fe 00bf00bf system-id check (10B350 / iPhone5,2)
+79d112 00f02df9 00bf00bf XIP check (10B350 / iPhone5,2)
