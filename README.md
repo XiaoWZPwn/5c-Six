@@ -1,4 +1,5 @@
-# 5c-Six: iPhone 5C to iOS 6.1.4
+# 5c-Six: 
+# iPhone 5C to iOS 6.1.4
 
 This project can currently only achieve the system installation and boot startup of  
 iOS 6.1.4 (10B350). If you want to fix the functions in your device, please wait for  
