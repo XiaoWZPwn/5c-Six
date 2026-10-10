@@ -13,7 +13,7 @@ dynamic libraries, configuration, and `fixkeybag` binary.
 
 ## Requirements
 
-- Intel macOS, Xcode Command Line Tools
+- Intel macOS and macOS 12.0+, Xcode Command Line Tools
 - iPhone5,3 connected by USB and a known way to enter DFU mode
 - At least 8 GB free space for the IPSW, decrypted RootFS, and working files
 - Internet access to look up and download the iPhone5,2 iOS 6.1.4 (10B350) IPSW
