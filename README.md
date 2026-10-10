@@ -35,8 +35,8 @@ Run these from this directory:
   uses cached boot images when valid and rebuilds them automatically if needed.
 
 If no compatible iPhone5,2 10B350 IPSW is found in the project directory or download  
-cache, the script opens an arrow-key menu. Use Up/Down to choose an option and press  
-Enter to confirm; press Ctrl-C to cancel:
+cache, the script opens an arrow-key menu. Use Up/Down to choose an option and  
+press Enter to confirm; press Ctrl-C to cancel:
 
 1. Select a local IPSW using the macOS file chooser.
 2. Download the IPSW from Apple's CDN. The download URL is looked up through  
