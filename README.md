@@ -1,4 +1,4 @@
-# 5c-Six: iPhone 5C to iOS 6.1.4
+# 5c-Six: iPhone 5c to iOS 6.1.4
 
 This project currently provides experimental system installation and boot startup of  
 iOS 6.1.4 (10B350). If you want to fix the functions in your device, please wait for  
@@ -57,3 +57,4 @@ restore the device with an official iPhone5,3 10.3.3/10.3.4 IPSW.
 ## History
 - commit 1 Initial commit
 - commit 2 Update readme
+- commit 3 Modify the readme
