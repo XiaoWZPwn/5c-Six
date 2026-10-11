@@ -1,6 +1,6 @@
 # 5c-Six: iPhone 5C to iOS 6.1.4
 
-This project can currently only achieve the system installation and boot startup of  
+This project currently provides experimental system installation and boot startup of  
 iOS 6.1.4 (10B350). If you want to fix the functions in your device, please wait for  
 Github: [@MC-XiaoXiao](https://github.com/MC-XiaoXiao) to release the official version...
 
@@ -35,8 +35,8 @@ Run these from this directory:
   uses cached boot images when valid and rebuilds them automatically if needed.
 
 If no compatible iPhone5,2 10B350 IPSW is found in the project directory or download  
-cache, the script opens an arrow-key menu. Use Up/Down to choose an option and press  
-Enter to confirm; press Ctrl-C to cancel:
+cache, the script opens an arrow-key menu. Use Up/Down to choose an option and  
+press Enter to confirm; press Ctrl-C to cancel:
 
 1. Select a local IPSW using the macOS file chooser.
 2. Download the IPSW from Apple's CDN. The download URL is looked up through  
@@ -53,3 +53,7 @@ restore the device with an official iPhone5,3 10.3.3/10.3.4 IPSW.
 - **LukeZGD**: many tools from [Legacy-iOS-Kit](https://github.com/LukeZGD/Legacy-iOS-Kit)
 - **NyanSatan**: 32-Bit iOS Dualboot guide and [fixkeybag](https://github.com/NyanSatan/fixkeybag)
 - **dora2ios**: - [iPwnder32](https://github.com/dora2ios/iPwnder32) (use BootROM exploit)
+
+## History
+- commit 1 Initial commit
+- commit 2 Update readme

@@ -669,11 +669,9 @@ tether_boot() {
 
 usage() {
     printf '%s\n' \
-        "Usage: $0 {install|boot|build-boot|build-ramdisk|help}" \
+        "Usage: $0 {install|boot|help}" \
         "  install     Prepare RootFS, boot SSH ramdisk, repartition, install" \
-        "  boot        Tether-boot the installed iOS 6.1.4 system" \
-        "  build-boot  Build and validate cached 11A470a/10B350 boot images" \
-        "  build-ramdisk Build the bundled 11A470a SSH ramdisk without a device"
+        "  boot        Tether-boot the installed iOS 6.1.4 system"
 }
 
 main() {
