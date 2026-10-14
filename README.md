@@ -1,12 +1,14 @@
-# 5c-Six: iPhone 5c to iOS 6.1.4
+# 5c-Six: iPhone 5c to iOS 6.1.4 (Demo)
+
+This project will be kept as an archive and will no longer be updated. If you want to enjoy updates on this base project, you can go to the replica project on Github: [5c-Six](https://github.com/appleiPodTouch4/5c-Six)
 
 This project currently provides experimental system installation and boot startup of  
 iOS 6.1.4 (10B350). If you want to fix the functions in your device, please wait for  
-Github: [@MC-XiaoXiao](https://github.com/MC-XiaoXiao) to release the official version...
+Github: [@MC-XiaoXiao](https://github.com/MC-XiaoXiao) and [@PeterDobby](https://github.com/Peterdobby)to release the official version...
 
 This is a standalone macOS project for the experimental, tethered iOS 6.1.4 (10B350)  
-cross-boot on iPhone5,3, based on Kaiden's guide:  
-<https://kaidenac.com/posts/downgrading-the-iphone-5c-to-ios-6/>
+cross-boot on iPhone5,3, based on [Kaiden](https://github.com/Kaiden-AC)'s guide:  
+[A guide for tether downgrading the iPhone 5C to iOS 6](https://kaidenac.com/posts/downgrading-the-iphone-5c-to-ios-6)
 
 The project keeps its own script, boot firmware, keys, SSH ramdisk, utilities,  
 dynamic libraries, configuration, and [fixkeybag](https://github.com/NyanSatan/fixkeybag) binary.
@@ -52,9 +54,15 @@ restore the device with an official iPhone5,3 10.3.3/10.3.4 IPSW.
 ## Credits
 - **LukeZGD**: many tools from [Legacy-iOS-Kit](https://github.com/LukeZGD/Legacy-iOS-Kit)
 - **NyanSatan**: 32-Bit iOS Dualboot guide and [fixkeybag](https://github.com/NyanSatan/fixkeybag)
-- **dora2ios**: - [iPwnder32](https://github.com/dora2ios/iPwnder32) (use BootROM exploit)
+- **dora2ios**: [iPwnder32](https://github.com/dora2ios/iPwnder32) (use BootROM exploit)
+- **Kaiden** : A guide for tether downgrading the iPhone 5C to iOS 6
+- **XiaoWZPwn**: Start the debugging equipment
+- **Ht2020-Tech**: Add support for "macOS BigSur"
+- **appleiPodTouch4**: Code organization
+- **Everyone** helps the device start the test
 
 ## History
 - commit 1 Initial commit
 - commit 2 Update readme
 - commit 3 Modify the readme
+- commit 4 Modify the readme
