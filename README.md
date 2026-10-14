@@ -4,10 +4,10 @@ This project will be kept as an archive and will no longer be updated. If you wa
 
 This project currently provides experimental system installation and boot startup of  
 iOS 6.1.4 (10B350). If you want to fix the functions in your device, please wait for  
-Github: [@MC-XiaoXiao](https://github.com/MC-XiaoXiao) and [@PeterDobby](https://github.com/Peterdobby)to release the official version...
+Github: [@MC-XiaoXiao](https://github.com/MC-XiaoXiao) and [@PeterDobby](https://github.com/Peterdobby) to release the official version...
 
 This is a standalone macOS project for the experimental, tethered iOS 6.1.4 (10B350)  
-cross-boot on iPhone5,3, based on [Kaiden](https://github.com/Kaiden-AC)'s guide:  
+cross-boot on iPhone5,3, based on [Kaiden's](https://github.com/Kaiden-AC) guide:  
 [A guide for tether downgrading the iPhone 5C to iOS 6](https://kaidenac.com/posts/downgrading-the-iphone-5c-to-ios-6)
 
 The project keeps its own script, boot firmware, keys, SSH ramdisk, utilities,  
@@ -66,3 +66,4 @@ restore the device with an official iPhone5,3 10.3.3/10.3.4 IPSW.
 - commit 2 Update readme
 - commit 3 Modify the readme
 - commit 4 Modify the readme
+- commit 5 Last monified
